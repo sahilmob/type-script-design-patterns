@@ -1,6 +1,6 @@
 //Typescript decorator pattern
 
-abstract class car {
+abstract class Car {
 	public description: string;
 
 	public getDescription(): string {
@@ -10,14 +10,14 @@ abstract class car {
 	public abstract cost(): number;
 }
 
-class ModelS {
+class ModelS extends Car {
 	public description = "Model S";
 
 	public cost(): number {
 		return 73000;
 	}
 }
-class ModelX {
+class ModelX extends Car {
 	public description = "Model X";
 
 	public cost(): number {

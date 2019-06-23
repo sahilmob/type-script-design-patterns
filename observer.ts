@@ -4,6 +4,10 @@ interface Subject {
 	removeObserver(o: Observer);
 	notifyObservers();
 }
+
+interface Observer {
+	update(temperature: number);
+}
 class WeatherStation {
 	private temperature: number;
 

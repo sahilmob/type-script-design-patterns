@@ -89,10 +89,27 @@ class HomeTheaterFacade {
 		this.bluery.play();
 	}
 
-	public wnfMovie() {
+	public endMovie() {
 		this.popcornMaker.turnOff();
 		this.tv.turnOff();
 		this.amp.turnOff();
 		this.bluery.turnOff();
 	}
 }
+
+let blueray = new BluerayPlayer();
+let amp = new Amplifier();
+let lights = new Lights();
+let tv = new Tv();
+let popcornMaker = new PopcornMaker();
+
+let homeTheaterFacade = new HomeTheaterFacade(
+	blueray,
+	amp,
+	lights,
+	tv,
+	popcornMaker
+);
+
+homeTheaterFacade.watchMovie();
+homeTheaterFacade.endMovie();

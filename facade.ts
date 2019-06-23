@@ -51,3 +51,48 @@ class PopcornMaker {
 		console.log("Popping corn");
 	}
 }
+
+class HomeTheaterFacade {
+	private bluery: BluerayPlayer;
+	private amp: Amplifier;
+	private lights: Lights;
+	private tv: Tv;
+	private popcornMaker: PopcornMaker;
+
+	constructor(
+		bluery: BluerayPlayer,
+		amp: Amplifier,
+		lights: Lights,
+		tv: Tv,
+		popcornMaker: PopcornMaker
+	) {
+		this.bluery = bluery;
+		this.amp = amp;
+		this.lights = lights;
+		this.tv = tv;
+		this.popcornMaker = popcornMaker;
+	}
+
+	public watchMovie() {
+		this.popcornMaker.turnOn();
+		this.popcornMaker.pop();
+
+		this.lights.dim();
+
+		this.tv.turnOn();
+
+		this.amp.on();
+		this.amp.setSource("blueray");
+		this.amp.setVolume(11);
+
+		this.bluery.on();
+		this.bluery.play();
+	}
+
+	public wnfMovie() {
+		this.popcornMaker.turnOff();
+		this.tv.turnOff();
+		this.amp.turnOff();
+		this.bluery.turnOff();
+	}
+}

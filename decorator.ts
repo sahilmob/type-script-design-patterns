@@ -46,3 +46,19 @@ class EnhancedAutoPilot extends CarOptions {
 		return this.decoratedCar.cost() + 5000;
 	}
 }
+
+class RearFacingSeats extends CarOptions {
+	decoratedCar: Car;
+
+	constructor(car: Car) {
+		super();
+		this.decoratedCar = car;
+	}
+
+	public getDescription(): string {
+		return this.decoratedCar.getDescription() + ", Rear facing seats";
+	}
+	public cost(): number {
+		return this.decoratedCar.cost() + 4000;
+	}
+}

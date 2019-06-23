@@ -4,7 +4,7 @@ interface State {
 	order: Order;
 
 	cancelOrder();
-	verifyOrder();
+	verifyPayment();
 	shipOrder();
 }
 
@@ -44,7 +44,7 @@ class PaymentPendingState implements State {
 		console.log("Canceling your unpaid order");
 		this.order.setState(this.order.cancelledOrderState);
 	}
-	verifyOrder() {
+	verifyPayment() {
 		console.log("Payment verified");
 		this.order.setState(this.order.orderBeingPreparedState);
 	}
@@ -62,7 +62,7 @@ class CancelledOrderState implements State {
 	cancelOrder() {
 		console.log("Your order has already been canceled");
 	}
-	verifyOrder() {
+	verifyPayment() {
 		console.log("Order canceled, you cannot verify your order");
 	}
 	shipOrder() {
@@ -81,7 +81,7 @@ class OrderBeingPreparedState implements State {
 		console.log("Canceling your order");
 		this.order.setState(this.order.cancelledOrderState);
 	}
-	verifyOrder() {
+	verifyPayment() {
 		console.log("Your order has already been verified");
 	}
 	shipOrder() {
@@ -100,10 +100,24 @@ class OrderShippedState implements State {
 	cancelOrder() {
 		console.log("Your order has already been shipped");
 	}
-	verifyOrder() {
+	verifyPayment() {
 		console.log("Your order has already been verified");
 	}
 	shipOrder() {
 		console.log("Your order has already been shipped");
 	}
 }
+
+let order = new Order();
+order.getState().shipOrder();
+
+console.log("Order state " + (<any>order.getState()).constructor.name);
+
+order.getState().verifyPayment();
+
+order.getState().verifyPayment();
+
+console.log("Order state " + (<any>order.getState()).constructor.name);
+
+order.getState().shipOrder();
+order.getState().shipOrder();

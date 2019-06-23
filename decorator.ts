@@ -1,0 +1,2 @@
+//Typescript decorator pattern
+

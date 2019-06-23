@@ -33,3 +33,31 @@ class WeatherStation implements Subject {
 		}
 	}
 }
+
+class TemperatureDisplay implements Observer {
+	private subject: Subject;
+
+	constructor(weatherStation: WeatherStation) {
+		this.subject = weatherStation;
+		weatherStation.registerObserver(this);
+	}
+	update(temperature: number) {
+		console.log("TemperatureDisplay: I need to update my display.");
+	}
+}
+
+class Fan implements Observer {
+	private subject: Subject;
+
+	constructor(weatherStation: WeatherStation) {
+		this.subject = weatherStation;
+		weatherStation.registerObserver(this);
+	}
+	update(temperature: number) {
+		if (temperature > 25) {
+			console.log("Fan: its hot here, turning myself on");
+		} else {
+			console.log("Fan: its nice and cool, turning myself off");
+		}
+	}
+}

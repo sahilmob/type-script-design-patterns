@@ -12,8 +12,8 @@ class WeatherStation implements Subject {
 	private temperature: number;
 	private observers: Observer[] = [];
 
-	set setTemperature(temp: number) {
-		console.log("WeatherStating: new temp. measurement: " + temp);
+	setTemperature(temp: number) {
+		console.log("WeatherStation: new temp. measurement: " + temp);
 		this.temperature = temp;
 		this.notifyObservers();
 	}
@@ -61,3 +61,10 @@ class Fan implements Observer {
 		}
 	}
 }
+
+let weatherStation = new WeatherStation();
+let temperatureDisplay = new TemperatureDisplay(weatherStation);
+let fan = new Fan(weatherStation);
+
+weatherStation.setTemperature(20);
+weatherStation.setTemperature(40);

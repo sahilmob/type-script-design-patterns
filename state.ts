@@ -1,0 +1,1 @@
+//Typescript state pattern

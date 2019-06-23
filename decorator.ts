@@ -24,3 +24,9 @@ class ModelX extends Car {
 		return 77000;
 	}
 }
+
+abstract class CarOptions extends Car {
+	decoratedCat: Car;
+	public abstract getDescription(): string;
+	public abstract cost(): number;
+}

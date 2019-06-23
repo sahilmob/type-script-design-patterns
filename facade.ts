@@ -1,0 +1,1 @@
+//Typescript facade pattern

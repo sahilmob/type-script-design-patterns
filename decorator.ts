@@ -26,7 +26,23 @@ class ModelX extends Car {
 }
 
 abstract class CarOptions extends Car {
-	decoratedCat: Car;
+	decoratedCar: Car;
 	public abstract getDescription(): string;
 	public abstract cost(): number;
+}
+
+class EnhancedAutoPilot extends CarOptions {
+	decoratedCar: Car;
+
+	constructor(car: Car) {
+		super();
+		this.decoratedCar = car;
+	}
+
+	public getDescription(): string {
+		return this.decoratedCar.getDescription() + ", Enhanced Auto Pilot";
+	}
+	public cost(): number {
+		return this.decoratedCar.cost() + 5000;
+	}
 }
